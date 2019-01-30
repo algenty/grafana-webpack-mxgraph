@@ -1,2 +1,2 @@
 # grafana-webpack-mxgraph
-Test grafana plugin with mxgraph and mxgraph
+Test grafana plugin with mxgraph

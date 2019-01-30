@@ -1,33 +1,29 @@
 {
   "name": "grafana-webpack-mxgraph",
   "version": "0.0.1",
-  "description": "Show list of progress items by mapping your data.",
-  "main": "src/module.js",
+  "description": "Test mxgraph with webpack in grafana",
+  "main": "dist/module.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack --config build/webpack.prod.conf.js",
+    "dev": "webpack --config build/webpack.dev.conf.js"
   },
-  "keywords": [
-    "grafana",
-    "plugin",
-    "mxgraphe",
-    "typescript",
-    "webpack"
-  ],
+  "keywords": [],
   "author": "Arnaud GENTY",
-  "license": "Apache-2.0",
+  "license": "Apache 2.0",
   "repository": "https://github.com/algenty/grafana-webpack-mxgraph",
   "devDependencies": {
-    "@types/angular": "^1.5.8",
-    "@types/grafana": "git+https://git@github.com/CorpGlory/types-grafana.git",
-    "@types/lodash": "^4.14.74",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
     "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.28.9",
+    "extract-text-webpack-plugin": "^3.0.2",
     "loader-utils": "^1.1.0",
     "mxgraph-js": "^1.0.1",
-    "ts-loader": "^2.3.7",
-    "typescript": "^2.4.2",
-    "webpack": "^3.5.6"
-  }
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.20.1",
+    "webpack": "^3.6.0"
+  },
+  "dependencies": {}
 }

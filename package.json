@@ -1,0 +1,33 @@
+{
+  "name": "grafana-webpack-mxgraph",
+  "version": "0.0.1",
+  "description": "Show list of progress items by mapping your data.",
+  "main": "src/module.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [
+    "grafana",
+    "plugin",
+    "mxgraphe",
+    "typescript",
+    "webpack"
+  ],
+  "author": "Arnaud GENTY",
+  "license": "Apache-2.0",
+  "repository": "https://github.com/algenty/grafana-webpack-mxgraph",
+  "devDependencies": {
+    "@types/angular": "^1.5.8",
+    "@types/grafana": "git+https://git@github.com/CorpGlory/types-grafana.git",
+    "@types/lodash": "^4.14.74",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "loader-utils": "^1.1.0",
+    "mxgraph-js": "^1.0.1",
+    "ts-loader": "^2.3.7",
+    "typescript": "^2.4.2",
+    "webpack": "^3.5.6"
+  }
+}

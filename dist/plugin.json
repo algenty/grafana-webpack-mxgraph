@@ -1,0 +1,25 @@
+{
+  "type": "panel",
+  "name": "Plugin webpack mxgraph test",
+  "id": "agenty-webpack-mxgraph",
+  "info": {
+    "description": "Plugin for testing mxgphaph in grafana",
+    "author": {
+      "name": "Arnaud GENTY",
+      "url": "https://github.com/algenty/grafana-webpack-mxgraph"
+    },
+    "keywords": [ ],
+    "logos": {
+        "small": "img/mxgraph_logo.gif",
+        "large": "img/mxgraph_logo.gif"
+    },
+    "links": [ ],
+    "screenshots": [ ],
+    "version": "0.0.1",
+    "updated": "2017-04-05"
+  },
+  "dependencies": {
+    "grafanaVersion": "4.6.x",
+    "plugins": [ ]
+  }
+}

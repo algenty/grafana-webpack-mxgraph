@@ -4,8 +4,7 @@
   "description": "Test mxgraph with webpack in grafana",
   "main": "dist/module.js",
   "scripts": {
-    "build": "webpack --config build/webpack.prod.conf.js",
-    "dev": "webpack --config build/webpack.dev.conf.js"
+    "build": "webpack --config webpack.config.js"
   },
   "keywords": [],
   "author": "Arnaud GENTY",
@@ -13,7 +12,6 @@
   "repository": "https://github.com/algenty/grafana-webpack-mxgraph",
   "devDependencies": {
     "@angular/cli": "^7.3.0",
-    "@types/grafana": "https://git@github.com/CorpGlory/types-grafana.git",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
@@ -35,7 +33,8 @@
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.1",
-    "webpack": "^2.7.0"
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1"
   },
   "dependencies": {}
 }

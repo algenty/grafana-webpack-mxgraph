@@ -73,10 +73,10 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PanelCtrl", function() { return Ctrl; });
-throw new Error("Cannot find module \"app/plugins/sdk\"");
+throw new Error("Cannot find module \"grafana/app/plugins/sdk\"");
  // will be resolved to app/plugins/sdk
 
-class Ctrl extends __WEBPACK_IMPORTED_MODULE_0_app_plugins_sdk__["PanelCtrl"] {
+class Ctrl extends __WEBPACK_IMPORTED_MODULE_0_grafana_app_plugins_sdk__["PanelCtrl"] {
 
   constructor($scope, $injector) {
     super($scope, $injector);

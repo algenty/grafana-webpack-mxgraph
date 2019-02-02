@@ -11,16 +11,10 @@ class Ctrl extends PanelCtrl {
   }
 
   initStyles() {
-    window.System.import(this.panelPath + 'css/panel.base.css!');
+    window.System.import(this.panelPath + 'css/flowchart.css!');
     // Remove next lines if you don't need separate styles for light and dark themes
-    if (grafanaBootData.user.lightTheme) {
-      window.System.import(this.panelPath + 'css/panel.light.css!');
-    } else {
-      window.System.import(this.panelPath + 'css/panel.dark.css!');
-    }
-    // Remove up to here
   }
-
+  
   get panelPath() {
     if (this._panelPath === undefined) {
       this._panelPath = `/public/plugins/${this.pluginId}/`;

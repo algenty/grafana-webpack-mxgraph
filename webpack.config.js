@@ -3,21 +3,15 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const ExtractTextPluginBase = new ExtractTextPlugin('./css/panel.base.css');
-const ExtractTextPluginLight = new ExtractTextPlugin('./css/panel.light.css');
-const ExtractTextPluginDark = new ExtractTextPlugin('./css/panel.dark.css');
-
-function resolve(dir) {
-  return path.join(__dirname, '..', dir)
-}
+const ExtractTextPluginBase = new ExtractTextPlugin('./css/flowchart.css');
 
 module.exports = {
   target: 'node',
-  context: resolve('src'),
+  context: path.resolve('src'),
   entry: './module.js',
   output: {
     filename: "module.js",
-    path: resolve('dist'),
+    path: path.resolve('dist'),
     libraryTarget: "amd"
   },
   externals: [
@@ -35,15 +29,14 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new CopyWebpackPlugin([
       { from: 'plugin.json' },
-      { from: 'partials/*' }
+      { from: 'partials/*' },
+      { from: 'img/*' }
     ]),
     ExtractTextPluginBase,
-    ExtractTextPluginLight,
-    ExtractTextPluginDark,
   ],
   resolve: {
     alias: {
-      'src': resolve('src')
+      'src': path.resolve('src')
     }
   },
   module: {
@@ -63,20 +56,6 @@ module.exports = {
       {
         test: /\.base\.(s?)css$/,
         use: ExtractTextPluginBase.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
-        })
-      },
-      {
-        test: /\.light\.(s?)css$/,
-        use: ExtractTextPluginLight.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
-        })
-      },
-      {
-        test: /\.dark\.(s?)css$/,
-        use: ExtractTextPluginDark.extract({
           fallback: 'style-loader',
           use: ['css-loader', 'sass-loader']
         })

@@ -2,18 +2,15 @@ import {
   PanelCtrl
 } from 'grafana/app/plugins/sdk'; // will be resolved to app/plugins/sdk
 // ../node_modules/mxgraph/javascript/dist/build
-var mxgraph = require('mxgraph')({
-    mxImageBasePath: 'mxgraph-mxImageBasePath',
-    mxBasePath: 'mxgraph-mxBasePath'
-  }),
-  mxGraph = mxgraph.mxGraph,
-  mxShape = mxgraph.mxShape,
-  mxConnectionConstraint = mxgraph.mxConnectionConstraint,
-  mxPoint = mxgraph.mxPoint,
-  mxPolyline = mxgraph.mxPolyline,
-  mxEvent = mxgraph.mxEvent,
-  mxRubberband = mxgraph.mxRubberband,
-  mxCellState = mxgraph.mxCellState;
+const mx = require('mxgraph')({ mxImageBasePath: 'mxgraph/images', mxBasePath: 'mxgraph' });
+  mxGraph = mx.mxGraph,
+  mxShape = mx.mxShape,
+  mxConnectionConstraint = mx.mxConnectionConstraint,
+  mxPoint = mx.mxPoint,
+  mxPolyline = mx.mxPolyline,
+  mxEvent = mx.mxEvent,
+  mxRubberband = mx.mxRubberband,
+  mxCellState = mx.mxCellState;
 
 class Ctrl extends PanelCtrl {
 

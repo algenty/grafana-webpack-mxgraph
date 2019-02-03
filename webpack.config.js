@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const fs = require("fs");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -17,40 +18,50 @@ module.exports = {
   externals: [
     // remove the line below if you don't want to use buildin versions
     'jquery', 'lodash', 'moment',
-    function (context, request, callback) {
+    function(context, request, callback) {
       var prefix = 'grafana/';
       if (request.indexOf(prefix) === 0) {
         return callback(null, request.substr(prefix.length));
       }
       callback();
     }
+
   ],
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new CopyWebpackPlugin([
-      { from: 'plugin.json' },
-      { from: 'partials/*' },
-      { from: 'img/*' }
+    new CopyWebpackPlugin([{
+        from: 'plugin.json'
+      },
+      {
+        from: 'partials/*'
+      },
+      {
+        from: 'img/*'
+      }
     ]),
     ExtractTextPluginBase,
+    new webpack.DefinePlugin({
+      mxLoadResources: false,
+    })
   ],
   resolve: {
     alias: {
-      'src': path.resolve('src')
+      'src': path.resolve('src'),
+      // 'mxgraph' : path.resolve(__dirname, 'externals/mxgraph/javascript/dist/build'),
+      //'mxgraph' : path.resolve(__dirname, 'externals/mxgraph/javascript/src/js/mxClient'),
+      //'mxgraph' : path.resolve(__dirname, 'externals/mxgraph-js/javascript/mxClient'),
+      'mxgraph' : path.resolve(__dirname, 'node_modules/mxgraph-js/dist/mxgraph-js'),
+      'mxgraph-mxBasePath' : path.resolve(__dirname, 'node_modules/mxgraph/javascript/src'),
+      'mxgraph-mxImageBasePath' : path.resolve(__dirname, 'node_modules/mxgraph/javascript/src/images')
     }
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: /(external)/,
+        exclude: [/node_modules/],
         use: {
           loader: 'babel-loader',
-          query: {
-            presets: [
-              require.resolve('babel-preset-env')
-            ]
-          }
         }
       },
       {

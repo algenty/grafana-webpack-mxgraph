@@ -1,10 +1,9 @@
 module.exports = {
   initAndCall: function () {
-    window.mxImageBasePath = 'models/adminui-pub/resources/images'
-    window.mxBasePath = 'models/adminui-pub/resources'
+    window.mxImageBasePath = 'models/images'
+    window.mxBasePath = 'models/resources'
     return System.import('mxgraph')
       .then(function (mxgraph) {
-        if (window.mxGraph) return mxgraph
         // expose to global to allow mxGraph work correctly
         window.mxGraph = mxgraph.mxGraph
         window.mxShape = mxgraph.mxShape
@@ -42,6 +41,7 @@ module.exports = {
         window.mxCellOverlay = mxgraph.mxCellOverlay
         window.mxImage = mxgraph.mxImage
         window.mxPrintPreview = mxgraph.mxPrintPreview
+        console.log(mxgraph.mxClient.isBrowserSupported())
         return mxgraph
       })
   }

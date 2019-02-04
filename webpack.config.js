@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const fs = require("fs");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const ExtractTextPluginBase = new ExtractTextPlugin('./css/flowchart.css');
 
@@ -29,6 +30,7 @@ module.exports = {
   ],
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
+    new CleanWebpackPlugin([path.resolve('dist')]),
     new CopyWebpackPlugin([{
         from: 'plugin.json'
       },

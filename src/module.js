@@ -3,7 +3,7 @@ import {
 } from 'grafana/app/plugins/sdk'; // will be resolved to app/plugins/sdk
 // ../node_modules/mxgraph/javascript/dist/build
 
-var mx = require('./mxgraph');
+var mx = System.import('mxgraph');
 var  mxGraph = mx.mxGraph;
 var  mxShape = mx.mxShape;
 var  mxClient = mx.mxClient;

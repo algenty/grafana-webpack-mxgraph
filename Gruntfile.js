@@ -1,27 +1,50 @@
+var path = require("path"),
+  fs = require("fs"),
+  mxClientContent,
+  deps;
+
 module.exports = (grunt) => {
   require('load-grunt-tasks')(grunt);
-  var path = require('path');
-  var fs = require('fs');
-  const webpack = require('webpack');
   grunt.loadNpmTasks('grunt-execute');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-sass');
+  const sass = require('node-sass');
+
+  // mxClientContent = fs.readFileSync(
+  //   path.join(process.cwd(), "./javascript/src/js/mxClient.js"),
+  //   "utf8"
+  // );
+  // deps = mxClientContent.match(/mxClient\.include\([^"']+["'](.*?)["']/gi).map(function(str) {
+  //   return "." + str.match(/mxClient\.include\([^"']+["'](.*?)["']/)[1];
+  // });
+  // deps = ["./js/mxClient.js"].concat(deps.slice(0));
 
   grunt.initConfig({
 
-    clean: ['dist'],
+    clean: {
+      options: {
+        force: true
+      },
+      stuff: ['dist']
+    },
 
     copy: {
       src_to_dist: {
         cwd: 'src',
         expand: true,
-        src: ['**/*', '!**/*.js', '!**/*.scss', '!img/**/*'],
+        src: ['**/*', '!**/*.js', '!**/*.scss', '!img/**/*', '.*'],
+        dest: 'dist'
+      },
+      externals_to_dist: {
+        cwd: 'src',
+        expand: true,
+        src: ['externals/**/*'],
         dest: 'dist'
       },
       libs_to_dist: {
         cwd: 'node_modules',
         expand: true,
-        src: ['mxgraph/javascript/dist/**/*'],
+        src: ['mxgraph-js/dist/mxgraph-js.js', 'mxgraph/javascript/src/**/*'],
         dest: 'dist/libs'
       },
       readme: {
@@ -37,6 +60,8 @@ module.exports = (grunt) => {
       },
     },
 
+
+
     watch: {
       rebuild_all: {
         files: ['src/**/*', 'README.md'],
@@ -47,30 +72,32 @@ module.exports = (grunt) => {
       },
     },
 
-    webpack: {
-      js: {
-        target: 'node',
-        context: path.resolve('src'),
-        entry: "./module.js",
-        output: {
-          path: path.resolve('dist'),
-          libraryTarget: 'amd'
-        },
-      }
-    },
 
     sass: {
       options: {
-        sourceMap: true
+        sourceMap: true,
+        implementation: sass,
       },
       dist: {
         files: {
-          'dist/css/flowchart.css': 'src/css/flowchart.scss'
+          'dist/css/diagram.css': 'src/css/diagram.scss'
         }
       }
     },
 
+    babel: {
+      dist: {
+        files: [{
+          cwd: 'src',
+          expand: true,
+          src: ['*.js'],
+          dest: 'dist',
+          ext: '.js'
+        }]
+      },
+    },
+
   });
 
-  grunt.registerTask('default', ['clean', 'copy:src_to_dist', 'copy:readme', 'copy:libs_to_dist', 'copy:img_to_dist', 'webpack:js', 'sass']);
+  grunt.registerTask('default', ['copy:libs_to_dist', ]);
 };

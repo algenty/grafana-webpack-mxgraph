@@ -64,38 +64,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: path.resolve(__dirname, 'node_modules/mxgraph-js/dist/mxgraph-js'),
-        use: [
-          'exports-loader?' + [
-            // handler
-            'mxHandle', 'mxVertexHandler', 'mxEdgeSegmentHandler',
-
-            // io
-            'mxCodec', 'mxCodecRegistry',
-
-            // layout
-            'mxHierarchicalLayout', 'mxSwimlaneLayout',
-            'mxCircleLayout', 'mxCompactTreeLayout', 'mxCompositeLayout', 'mxFastOrganicLayout', 'mxGraphLayout',
-            'mxLayoutManager', 'mxParallelEdgeLayout', 'mxPartitionLayout', 'mxRadialTreeLayout', 'mxStackLayout',
-
-            // model
-            'mxCell', 'mxCellPath', 'mxGeometry', 'mxGraphModel',
-
-            'mxClient',
-
-            // shapes
-            'mxActor', 'mxArrow', 'mxArrowConnector', 'mxCloud', 'mxConnector', 'mxCylinder', 'mxDoubleEllipse', 'mxEllipse', 'mxHexagon', 'mxLabel', 'mxLine',
-            'mxMarker', 'mxPolyline', 'mxRectangleShape', 'mxRhombus', 'mxRubberband', 'mxStencil', 'mxStencilRegistry', 'mxSwimlane', 'mxText', 'mxTriangle',
-
-            // util
-            'mxConstants', 'mxEvent', 'mxUndoManager', 'mxUtils', 'mxDivResizer', 'mxImage', 'mxPoint', 'mxRectangle', 'mxLog',
-
-            // view
-            'mxGraph', 'mxEdgeStyle', 'mxCellRenderer', 'mxCellOverlay', 'mxCellState',
-          ].join(','),
-        ]
-      },
-      {
         test: /\.js$/,
         exclude: [/node_modules/],
         use: {
